@@ -44,6 +44,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
           ],
         ),
       ),
+     
     );
   }
 
@@ -67,7 +68,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
       child: Container(
         //  height: 300,
 //width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover, image: AssetImage("images/background.png"))),
       ),

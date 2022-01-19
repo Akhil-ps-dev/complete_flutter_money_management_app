@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_money_magement_app/pages/category/category_screen.dart';
-import 'package:flutter_money_magement_app/pages/settings_screen.dart';
-import 'package:flutter_money_magement_app/pages/transaction/transaction_screen.dart';
+import 'package:flutter_money_magement_app/widgets/screen_home.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -9,55 +7,54 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int currentIndex = 0;
-  final screens = [
-    TransactionScreen(),
-    const CategoryScreen(),
-    const SettingsScreen(),
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey[700],
-        onTap: (index) => setState(() => currentIndex = index),
-        currentIndex: currentIndex,
-        type: BottomNavigationBarType.fixed,
-        elevation: 8,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.attach_money,
-              ),
-              label: 'Transaction'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.category_outlined,
-              ),
-              label: 'Category'),
+    return
+       
+        ValueListenableBuilder(
+      valueListenable: ScreenHome.sletedIndexNotifier,
+      builder: (BuildContext ctx, int updatedIndex, Widget? _) {
+        return BottomNavigationBar(
+          selectedItemColor: Colors.orange,
+          unselectedItemColor: Colors.grey[700],
+          onTap: (newIndex) {
+            ScreenHome.sletedIndexNotifier.value = newIndex;
+          },
+          currentIndex: updatedIndex,
+          type: BottomNavigationBarType.fixed,
+          elevation: 8,
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.attach_money,
+                ),
+                label: 'Transaction'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.category_outlined,
+                ),
+                label: 'Category'),
 
-     
-
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-              ),
-              label: 'Settings'),
-          // BottomNavigationBarItem(
-          //     icon: Icon(
-          //       Icons.search,
-          //     ),
-          //     label: 'Explore'),
-          // BottomNavigationBarItem(
-          //     icon: Icon(
-          //       Icons.settings,
-          //     ),
-          //     label: 'Settings'),
-        ],
-      ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                ),
+                label: 'Settings'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.search,
+            //     ),
+            //     label: 'Explore'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.settings,
+            //     ),
+            //     label: 'Settings'),
+          ],
+        );
+      },
     );
   }
 }
