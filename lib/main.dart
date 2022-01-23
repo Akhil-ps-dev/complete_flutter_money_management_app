@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       home: ScreenHome(),
       routes: {
-      ScreenAddTransaction.routeName:(ctx)=>const ScreenAddTransaction()
+        ScreenAddTransaction.routeName: (ctx) => const ScreenAddTransaction()
       },
     );
   }

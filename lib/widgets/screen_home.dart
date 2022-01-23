@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_money_magement_app/bottomnavi/bottomnavi.dart';
-import 'package:flutter_money_magement_app/db/category/transation/category_db.dart';
 import 'package:flutter_money_magement_app/pages/category/category_add_popup.dart';
 import 'package:flutter_money_magement_app/pages/category/category_screen.dart';
 import 'package:flutter_money_magement_app/pages/settings_screen.dart';
@@ -15,7 +14,7 @@ class ScreenHome extends StatelessWidget {
   final _pages = const [
     TransactionScreen(),
     CategoryScreen(),
-    SettingsScreen(),
+    SettingsScreen()
   ];
 
   @override
