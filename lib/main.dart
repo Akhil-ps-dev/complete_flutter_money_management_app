@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ScreenHome(),
+      home:const ScreenHome(),
       routes: {
         ScreenAddTransaction.routeName: (ctx) => const ScreenAddTransaction()
       },

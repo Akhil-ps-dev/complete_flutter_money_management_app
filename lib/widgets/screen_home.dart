@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_money_magement_app/bottomnavi/bottomnavi.dart';
 import 'package:flutter_money_magement_app/pages/category/category_add_popup.dart';
 import 'package:flutter_money_magement_app/pages/category/category_screen.dart';
-import 'package:flutter_money_magement_app/pages/settings_screen.dart';
+import 'package:flutter_money_magement_app/pages/settings/settings_screen.dart';
 import 'package:flutter_money_magement_app/pages/transaction/add_transation/screen_add_transaction.dart';
-import 'package:flutter_money_magement_app/pages/transaction/transaction_screen.dart';
+import 'package:flutter_money_magement_app/pages/transaction/add_transation/transaction_screen.dart';
 
 class ScreenHome extends StatelessWidget {
-  ScreenHome({Key? key}) : super(key: key);
+  const ScreenHome({Key? key}) : super(key: key);
 
   static ValueNotifier<int> sletedIndexNotifier = ValueNotifier(0);
 

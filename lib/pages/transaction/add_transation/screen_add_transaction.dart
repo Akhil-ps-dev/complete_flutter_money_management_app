@@ -126,13 +126,14 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
               },
             ),
             ElevatedButton.icon(
-                onPressed: () {
-                  addTransation();
-                },
-                icon: const Icon(
-                  Icons.done,
-                ),
-                label: Text('Done'))
+              onPressed: () {
+                addTransation();
+              },
+              icon: const Icon(
+                Icons.done,
+              ),
+              label: Text('Done'),
+            )
           ],
         ),
       )),
@@ -141,7 +142,7 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
 
   Future<void> addTransation() async {
     final _purposeTextEdit = _purposeEditingController.text;
-    final _amountTextEdit = _purposeEditingController.text;
+    final _amountTextEdit = _amountEditingController.text;
 
     if (_purposeTextEdit.isEmpty) {
       return;
@@ -151,9 +152,9 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
       return;
     }
 
-    if (_categoryID == null) {
-      return;
-    }
+    // if (_categoryID == null) {
+    //   return;
+    // }
 
     if (_selectedcategoryModel == null) {
       return;
@@ -176,6 +177,8 @@ class _ScreenAddTransactionState extends State<ScreenAddTransaction> {
         type: _selectedCategorytype!,
         category: _selectedcategoryModel!);
 
-    TransactionDB.instance.addTransation(_model);
+    await TransactionDB.instance.addTransation(_model);
+    Navigator.of(context).pop();
+    TransactionDB.instance.refresh();
   }
 }
