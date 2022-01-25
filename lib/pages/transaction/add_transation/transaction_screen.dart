@@ -3,6 +3,7 @@ import 'package:flutter_money_magement_app/db/category/transation/category_db.da
 import 'package:flutter_money_magement_app/db/category/transation/transation_db.dart';
 import 'package:flutter_money_magement_app/models/category/category_models.dart';
 import 'package:flutter_money_magement_app/models/transation/transation_model.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -21,23 +22,42 @@ class TransactionScreen extends StatelessWidget {
 
             itemBuilder: (context, index) {
               final _value = newList[index];
-
-              return Card(
-                  elevation: 0,
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 50,
-                      child: Text(
-                        parseDate(_value.date),
-                        textAlign: TextAlign.center,
+              return Slidable(
+                key: Key(_value.id!),
+                startActionPane: ActionPane(motion: ScrollMotion(), children: [
+                  SlidableAction(
+                    onPressed: (ctx) {
+                      TransactionDB.instance.deleteTransation(_value.id!);
+                    },
+                    backgroundColor: Color(0xFFFE4A49),
+                    foregroundColor: Colors.white,
+                    icon: Icons.delete,
+                    label: 'Delete',
+                  ),
+                ]),
+                child: Card(
+                    elevation: 0,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 50,
+                        child: Text(
+                          parseDate(
+                            _value.date,
+                          ),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        backgroundColor: _value.type == CatrgoryType.income
+                            ? Colors.green
+                            : Colors.red,
                       ),
-                      backgroundColor: _value.type == CatrgoryType.income
-                          ? Colors.green
-                          : Colors.red,
-                    ),
-                    title: Text('rs ${_value.amount}'),
-                    subtitle: Text(_value.category.name),
-                  ));
+                      title: Text(
+                        '₹ ${_value.amount}',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      subtitle: Text(_value.category.name),
+                    )),
+              );
             },
             separatorBuilder: (context, index) {
               return const SizedBox(
@@ -50,9 +70,11 @@ class TransactionScreen extends StatelessWidget {
   }
 
   String parseDate(DateTime date) {
-    final _date = DateFormat.MMMd().format(date);
-    final _splitDate = _date.split('');
-    return '${_splitDate.last}\n${_splitDate.first}';
+    //  final _date =
+    return DateFormat.MMMd().format(date);
+    // final _splitDate = _date.split('');
+    // return
+    //'${_splitDate.last}\n${_splitDate.first}';
 
     // return '${date.day}\n${date.month}';
   }
@@ -86,7 +108,7 @@ class TransactionScreen extends StatelessWidget {
 //           ],
 //         ),
 //       ),
-     
+
 //     );
 //   }
 
