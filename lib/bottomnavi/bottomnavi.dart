@@ -7,13 +7,9 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
- 
-
   @override
   Widget build(BuildContext context) {
-    return
-       
-        ValueListenableBuilder(
+    return ValueListenableBuilder(
       valueListenable: ScreenHome.sletedIndexNotifier,
       builder: (BuildContext ctx, int updatedIndex, Widget? _) {
         return BottomNavigationBar(
@@ -37,11 +33,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ),
                 label: 'Category'),
 
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                ),
-                label: 'Settings'),
             // BottomNavigationBarItem(
             //     icon: Icon(
             //       Icons.search,
