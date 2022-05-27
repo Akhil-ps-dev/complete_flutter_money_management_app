@@ -14,7 +14,6 @@ class ScreenHome extends StatelessWidget {
   final _pages = const [
     TransactionScreen(),
     CategoryScreen(),
-  
   ];
 
   @override
